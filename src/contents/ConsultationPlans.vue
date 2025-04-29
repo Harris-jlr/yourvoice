@@ -1,180 +1,83 @@
 <template>
-  <section class="bg-gray-50 py-16 px-4 sm:px-8 lg:px-16">
-    <div class="max-w-5xl mx-auto text-center mb-12">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">Choose Your Consultation Plan</h2>
-      <p class="text-lg text-gray-600">Start with confidence — no long-term contracts, real progress from day one.</p>
+  <section class="bg-gray-100 py-16 px-4 sm:px-8 lg:px-16">
+    <div class="max-w-7xl mx-auto text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-2">Choose Your Support Plan</h2>
+      <p class="text-lg text-gray-600">No contracts. Just support when it matters most.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
-      <!-- Plan Cards -->
-      <div v-for="(plan, index) in plans" :key="index" class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center justify-between transform transition-transform duration-300 hover:scale-105 border-2" :class="plan.highlight ? 'border-blue-500 bg-blue-100' : 'border-white'">
-        <div class="flex flex-col items-center">
-          <h3 class="text-2xl font-semibold mb-2" :class="plan.highlight ? 'text-blue-700' : 'text-gray-900'">{{ plan.name }}</h3>
-          <p class="text-5xl font-bold mb-2" :class="plan.highlight ? 'text-blue-700' : 'text-gray-900'">{{ plan.price }}<span v-if="plan.weekly" class="text-base font-normal">/wk</span></p>
-          <p class="text-gray-500 mb-8"></p>
-          <ul class="text-gray-700 space-y-2 text-left mb-6">
-            <li v-for="(feature, idx) in plan.features" :key="idx">✔️ {{ feature }}</li>
-          </ul>
-        </div>
-        <button @click="openForm(plan.name)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded mt-auto">{{ plan.cta }}</button>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div v-for="plan in plans" :key="plan.name" :class="['rounded-xl p-6 shadow-lg border', plan.featured ? 'bg-pink-50 border-pink-500' : 'bg-white border-gray-200']">
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ plan.name }}</h3>
+        <p class="text-3xl font-bold text-gray-800 mb-4">{{ plan.price }}</p>
+        <ul class="text-sm text-gray-700 mb-6 space-y-2">
+          <li v-for="(feature, idx) in plan.features" :key="idx" class="flex items-start">
+            <svg class="w-5 h-5 text-pink-500 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L9 11.586 6.707 9.293a1 1 0 00-1.414 1.414L9 14.414l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+            {{ feature }}
+          </li>
+        </ul>
+        <button :class="['w-full py-2 rounded-md text-white font-medium', plan.featured ? 'bg-pink-600 hover:bg-pink-500' : 'bg-gray-800 hover:bg-gray-700']">
+          {{ plan.cta }}
+        </button>
       </div>
     </div>
-
-    <!-- Booking Form Modal -->
-    <div v-if="showForm" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div class="bg-white rounded-lg p-8 w-full max-w-lg relative">
-        <button @click="closeForm" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">✕</button>
-        <h3 class="text-2xl font-bold mb-6 text-center">Book Your {{ selectedPlan }} Session</h3>
-        <form @submit.prevent="submitForm" class="space-y-4">
-          <input v-model="form.name" type="text" placeholder="Name of Contact" class="w-full border rounded p-2" required>
-          <input v-model="form.business" type="text" placeholder="Name of Business" class="w-full border rounded p-2" required>
-          <input v-model="form.webaddress" type="text" placeholder="Company Website (optional)" class="w-full border rounded p-2">
-          <input v-model="form.email" type="email" placeholder="Your Email" class="w-full border rounded p-2" required>
-          <input v-model="form.phone" type="text" placeholder="Your Phone Number" class="w-full border rounded p-2" required>
-          <select v-model="form.timePreference" class="w-full border rounded p-2" required>
-            <option disabled value="">Preferred Contact Time</option>
-            <option>Morning</option>
-            <option>Evening</option>
-          </select>
-          <select v-model="form.contactPreference" class="w-full border rounded p-2" required>
-            <option disabled value="">Preferred Contact Method</option>
-            <option>Email</option>
-            <option>Text</option>
-          </select>
-          <textarea v-model="form.message" placeholder="Tell us a little about your needs" class="w-full border rounded p-2"></textarea>
-          <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded w-full">Submit Booking</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Success Message -->
-    <div v-if="showSuccess" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div class="bg-white rounded-lg p-8 w-full max-w-md text-center">
-        <h3 class="text-2xl font-bold text-green-600 mb-4">Booking Received!</h3>
-        <p class="text-gray-700 mb-6">Thank you {{ form.name }} — your request for {{ selectedPlan }} has been recorded. We'll contact you soon!</p>
-        <button @click="closeSuccess" class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded">Close</button>
-      </div>
-    </div>
-
   </section>
 </template>
 
 <script>
 export default {
-  name: 'ConsultationPlans',
-  data() {
-    return {
-      showForm: false,
-      showSuccess: false,
-      selectedPlan: '',
-      bookings: [],
-      form: {
-        name: '',
-        business: '',
-        webaddress: '',
-        email: '',
-        phone: '',
-        timePreference: '',
-        contactPreference: '',
-        message: ''
+  setup() {
+    const plans = [
+      {
+        name: 'Listener',
+        price: '$0',
+        features: [
+          '15-minute check-in call',
+          'One issue or question',
+          'Tips for next steps',
+          'Available 1x per patient',
+        ],
+        cta: 'Start Here',
+        featured: false,
       },
-      plans: [
-        {
-          name: 'Quick Start',
-          price: '$0',
-          features: [
-            '20 minute session',
-            'One focus area per call',
-            'Business review',
-            'Actionable tips each week',
-            'Up to 3 sessions'
-          ],
-          cta: "Let's Start",
-          highlight: false,
-          weekly: false
-        },
-        {
-          name: 'Discovery',
-          price: '$180',
-          features: [
-            '2 hours per week',
-            'Full Strategy Session',
-            'Review of goals',
-            'Quick Wins Roadmap',
-            'Recommendations'
-          ],
-          cta: "Let's Plan",
-          highlight: false,
-          weekly: true
-        },
-        {
-          name: 'Foundation',
-          price: '$360',
-          features: [
-            '4 hours per week',
-            'Business Mapping',
-            'Mini Brand or Website Audit',
-            '90-Day Action Plan',
-            'Priority Email Support'
-          ],
-          cta: "Let's Build",
-          highlight: true,
-          weekly: true
-        },
-        {
-          name: 'Growth',
-          price: '$720',
-          features: [
-            '8 hours per week',
-            'Full Strategic Discovery',
-            'Branding assets',
-            'Growth roadmap',
-            'Hands-on Launch Support'
-          ],
-          cta: "Let's Grow",
-          highlight: false,
-          weekly: true
-        }
-      ]
-    }
+      {
+        name: 'Companion',
+        price: '$120/wk',
+        features: [
+          '1-hour weekly support',
+          'Appointment preparation',
+          'Post-visit review',
+          'Phone/email follow-up',
+        ],
+        cta: 'Get Support',
+        featured: false,
+      },
+      {
+        name: 'Advocate',
+        price: '$240/wk',
+        features: [
+          '2 hours of advocacy',
+          'In-person or virtual visit support',
+          'Medical note translation',
+          'Care coordination assistance',
+        ],
+        cta: 'Book Advocate',
+        featured: true,
+      },
+      {
+        name: 'Family Circle',
+        price: '$480/wk',
+        features: [
+          '4 hours support per week',
+          'Multiple appointments',
+          'Ongoing care planning',
+          'Full family updates & guidance',
+        ],
+        cta: 'Build a Plan',
+        featured: false,
+      },
+    ];
+
+    return { plans };
   },
-  methods: {
-    openForm(planName) {
-      this.selectedPlan = planName;
-      this.showForm = true;
-    },
-    closeForm() {
-      this.showForm = false;
-      this.form = { name: '', business: '', webaddress: '', email: '', phone: '', timePreference: '', contactPreference: '', message: '' };
-    },
-    submitForm() {
-    fetch('http://localhost:3000/api/save-booking', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      ...this.form,
-      plan: this.selectedPlan,
-      submittedAt: new Date().toISOString()
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      this.showForm = false;
-      this.showSuccess = true;
-    } else {
-      alert('There was an error saving your booking.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('Error submitting booking.');
-  });
-  },
-    closeSuccess() {
-      this.showSuccess = false;
-      this.form = { name: '', business: '', webaddress: '', email: '', phone: '', timePreference: '', contactPreference: '', message: '' };
-    }
-  }
-}
+};
 </script>

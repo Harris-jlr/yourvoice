@@ -1,5 +1,5 @@
 <template>
-    <section class="relative bg-gray-900 text-white overflow-hidden">
+    <section class="relative bg-pink-900 text-white overflow-hidden">
       <!-- Subtle Blueprint Background -->
       <div class="absolute inset-0 bg-[url('/images/blueprint-grid.svg')] opacity-5 bg-center bg-cover pointer-events-none z-0"></div>
   
@@ -7,18 +7,18 @@
         <!-- Left Side: Text Content -->
          
       <img
-            src="../assets/mainblur.png"
+            src="../assets/artwork/heroimage.png"
             alt="Hero Visual"
-            class="absolute hidden sm:block right-0 max-w-2xl w-auto h-full object-cover"
+            class="absolute hidden sm:block right-0 max-w-2xl md:max-w-lg w-auto w-full object-cover"
         />  
         
         <div class="space-y-6 z-10">
-          <p class="text-blue-400 uppercase tracking-wide font-semibold">// Changing the way we do business</p>
-          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
-            Humanity First
+          <p class="text-blue-400 uppercase tracking-wide font-semibold"></p>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+            Your Voice Matters
           </h1>
           <p class="text-lg text-gray-300 max-w-lg">
-            We are a collective of professional software engineers with more than 10 years of experience in delivering superior products.
+            Your Voice is an advocacy group devoted to ensuring elderly patients are truly seen and heard during medical visits. With over a decade of experience, they stand beside patients and caregivers to protect dignity, slow down rushed systems, and bring compassion back to Healthcare.
           </p>
   
           <div class="mt-8 flex flex-wrap items-center gap-5">
@@ -43,7 +43,7 @@
     </section>
 
   <!-- three services section -->
-  <section class="relative z-20 -mt-12 px-6  pb-6">
+ <!--  <section class="relative z-20 -mt-12 px-6  pb-6">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="relative bg-gradient-to-r from-indigo-700 to-purple-600 text-white p-6 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ease-in-out will-change-transform overflow-hidden">
         <div class="absolute -top-8 -right-8 h-24 w-24 bg-white/10 rounded-full flex items-center justify-center ">
@@ -69,7 +69,7 @@
         <p class="text-sm text-white/90">From idea to MVP — we build product-ready solutions that scale.</p>
       </div>
     </div>
-  </section>
+  </section> -->
   </template>
   
   <script setup>

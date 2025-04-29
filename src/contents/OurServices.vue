@@ -4,10 +4,10 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mt-10">
           <h2 class="text-3xl text-center font-bold pb-12">Our Services</h2>
-          <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-            <div v-for="feature in features" :key="feature.name" class="relative" >
+          <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-8 md:gap-y-10">
+            <div v-for="feature in features" :key="feature.name" class="relative ml-20" >
               <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-full bg-blue-500 text-white" >
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-full bg-pink-500 text-white" >
                   <component :is="feature.icon" class="h-6 w-6" aria-hidden="true" />
                 </div>
                 <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
@@ -37,41 +37,36 @@
   
   const features = [
     {
-      name: 'Consultation & Strategy',
+      name: 'Patient Advocacy During Appointments',
       description:
-        'Expert guidance on tech stack selection, architecture planning, and project feasibility to ensure smart, scalable starts.',
+        'Trained advocates accompany elderly patients to medical visits to ensure concerns are heard, questions are answered, and care decisions are fully understood.',
       icon: GlobeAltIcon,
     },
     {
-      name: 'Discovery Workshops',
+      name: 'Pre-Visit Preparation',
       description:
-        'We facilitate collaborative sessions to define goals, surface risks, align teams, and create actionable project roadmaps.',
+        'We help patients and families prepare for upcoming health visits by organizing questions, reviewing medications, and identifying key concerns to discuss with providers.',
       icon: AnnotationIcon,
     },
     {
-      name: 'Rapid Prototyping',
+      name: 'Follow-Up & Care Coordination',
       description:
-        'Low-fidelity or functional prototypes built quickly to validate ideas, gather feedback, and accelerate product vision.',
+        'After the appointment, we provide support by reviewing care plans, clarifying next steps, and helping patients follow through with treatments, referrals, or changes.',
       icon: LightningBoltIcon,
     },
     {
-      name: 'Front-End Architecture',
+      name: 'Cognitive & Emotional Support',
       description:
-        'Modern, scalable UI foundations using frameworks like Vue, Vite, and Tailwind for fast, maintainable code.',
+        'Our team offers compassionate, trauma-informed support to patients who may feel overwhelmed, confused, or unheard—ensuring they are treated with dignity and patience.',
       icon: CodeIcon,
     },
     {
-      name: 'Accessible UX/UI Design',
+      name: 'Provider Partnership Programs',
       description:
-        'Design systems and interfaces crafted for usability, accessibility, and clean handoff to dev — beautiful and usable.',
+        'We work with clinics, hospitals, and long-term care providers to train staff on communication best practices and implement patient-centered care initiatives.',
       icon: ScaleIcon,
     },
-    {
-      name: 'Data Visualization',
-      description:
-        'Custom dashboards and interactive charts using D3, Chart.js, or Tableau to make data understandable and actionable.',
-      icon: ChartBarIcon,
-    },
+    
   ]
   
   export default {

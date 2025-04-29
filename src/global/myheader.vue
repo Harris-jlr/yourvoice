@@ -2,26 +2,26 @@
   <Popover class="relative bg-white">
     <div class="flex justify-between items-center px-4 pt-4  pb-0 sm:px-6 md:justify-start md:space-x-10">
       <div>
-           <img class="w-20 pb-2" src="../assets/logos/final-BLD-logo.png" alt="" >
+           <img class="w-32 pb-12" src="../assets/artwork/logo.png" alt="" >
       </div>
       <div class="-mr-2 -my-2 md:hidden">
-        <PopoverButton class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+        <PopoverButton class="bg-white rounded-md p-2 inline-flex items-center justify-center text-pink-400 hover:text-pink-500 hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
           <span class="sr-only">Open menu</span>
           <MenuIcon class="h-6 w-6" aria-hidden="true" />
         </PopoverButton>
       </div>
       <div class="hidden md:flex-1 md:flex md:items-center md:justify-between">
         <PopoverGroup as="nav" class="flex space-x-10">
-          <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900"> Home </a>
-          <a href="/aboutbld" class="text-base font-medium text-gray-500 active:font-bold hover:text-gray-900"> About Us </a>
-          <a href="/investors" class="text-base font-medium text-gray-500 active:font-bold hover:text-gray-900"> Investors </a>
-          <a href="/OurServices" class="text-base font-medium text-gray-500 hover:text-gray-900"> Our Services </a>
-          <a href="/StrategicPartner" class="text-base font-medium text-gray-500 hover:text-gray-900"> Strategic Partner </a>
-          <a href="/Pricing" class="text-base font-medium text-gray-500 hover:text-gray-900"> Pricing </a>
-          <a href="/merch" class="text-base font-medium text-gray-500 hover:text-gray-900"> Merch </a>
+          <a href="/" class="text-base font-medium text-pink-500 hover:text-pink-900"> Home </a>
+          <a href="/aboutbld" class="text-base font-medium text-pink-500 active:font-bold hover:text-pink-900"> About Us </a>
+  
+          <a href="/OurServices" class="text-base font-medium text-pink-500 hover:text-pink-900"> Our Services </a>
+       
+          <a href="/Pricing" class="text-base font-medium text-pink-500 hover:text-pink-900"> Pricing </a>
+     
         </PopoverGroup>
         <div class="flex items-center md:ml-12">
-          <router-link to="/login" class="text-gray-700 hover:text-blue-500 font-bold">
+          <router-link to="/login" class="text-pink-700 hover:text-pink-500 font-bold">
             Sign In
           </router-link>
           </div>
@@ -34,10 +34,10 @@
           <div class="pt-5 pb-6 px-5">
             <div class="flex items-center justify-between">
               <div>
-                <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900"><img class="h-24 w-auto" src="../assets/light1sq.png" alt="blueline" /></a>
+                <a href="/" class="text-base font-medium text-pink-500 hover:text-pink-900"><img class="h-20 w-auto" src="../assets/artwork/logo.png" alt="blueline" /></a>
               </div>
               <div class="-mr-2">
-                <PopoverButton class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <PopoverButton class="bg-white rounded-md p-2 inline-flex items-center justify-center text-pink-400 hover:text-pink-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span class="sr-only">Close menu</span>
                   <XIcon class="h-6 w-6" aria-hidden="true" />
                 </PopoverButton>
@@ -50,7 +50,7 @@
                   <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
                     <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <div class="ml-4 text-base font-medium text-gray-900">
+                  <div class="ml-4 text-base font-medium text-pink-900">
                     {{ item.name }}
                   </div>
                 </a>
@@ -60,7 +60,7 @@
           <div class="py-6 px-5">
             <div class="mt-6">
               <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-sky-500 hover:bg-indigo-700"> Sign up </a>
-              <p class="mt-6 text-center text-base font-medium text-gray-500">
+              <p class="mt-6 text-center text-base font-medium text-pink-500">
                 Existing customer?
                 {{ ' ' }}
                 <a href="#" class="text-indigo-600 hover:text-indigo-500"> Sign in </a>

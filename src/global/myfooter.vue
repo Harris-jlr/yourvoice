@@ -6,11 +6,11 @@
       <div class="md:grid md:grid-cols-3 xl:gap-8">
         <!--copyright-->
         <div class="space-y-8 xl:col-span-1">
-          <p class="text-base text-gray-400 xl:text-center">&copy; 2025 Blueline Design, LLC. All rights reserved.</p>
+          <p class="text-base text-gray-400 xl:text-center">&copy; 2025 Your Voice, LLC. All rights reserved.</p>
         </div>
        
       <!--middle columns-->
-      <div class="md:right-80 grid grid-cols-2 gap-8">
+      <!-- <div class="md:right-80 grid grid-cols-2 gap-8">
           <div class="mt-2 md:mt-0">
             <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Solutions</h3>
             <ul role="list" class="mt-2">
@@ -31,11 +31,11 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> -->
 
            <!--empty column-->
           <div class="mt-2 mb-2 flex justify-center">  
-              <img class="w-36" src="../assets/logos/steellogo.png" alt="" >  
+              <img class="w-36" src="../assets/artwork/logo.png" alt="" >  
           </div>
         </div>
       </div>

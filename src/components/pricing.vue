@@ -1,86 +1,83 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div class="bg-gray-100">
-    <div class="pt-12 sm:pt-16 lg:pt-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl">Simple no-tricks pricing</h2>
-          <p class="mt-4 text-xl text-gray-600">If you're not satisfied, contact us within the first 14 days and we'll send you a full refund.</p>
-        </div>
+  <section class="bg-gray-100 py-16 px-4 sm:px-8 lg:px-16">
+    <div class="max-w-7xl mx-auto text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-2">Choose Your Support Plan</h2>
+      <p class="text-lg text-gray-600">No contracts. Just support when it matters most.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div v-for="plan in plans" :key="plan.name" :class="['rounded-xl p-6 shadow-lg border', plan.featured ? 'bg-blue-50 border-blue-500' : 'bg-white border-gray-200']">
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ plan.name }}</h3>
+        <p class="text-3xl font-bold text-gray-800 mb-4">{{ plan.price }}</p>
+        <ul class="text-sm text-gray-700 mb-6 space-y-2">
+          <li v-for="(feature, idx) in plan.features" :key="idx" class="flex items-start">
+            <svg class="w-5 h-5 text-blue-500 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L9 11.586 6.707 9.293a1 1 0 00-1.414 1.414L9 14.414l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+            {{ feature }}
+          </li>
+        </ul>
+        <button :class="['w-full py-2 rounded-md text-white font-medium', plan.featured ? 'bg-blue-600 hover:bg-blue-500' : 'bg-gray-800 hover:bg-gray-700']">
+          {{ plan.cta }}
+        </button>
       </div>
     </div>
-    <div class="mt-8 bg-white pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
-      <div class="relative">
-        <div class="absolute inset-0 h-1/2 bg-gray-100" />
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex">
-            <div class="flex-1 bg-white px-6 py-8 lg:p-12">
-              <h3 class="text-2xl font-extrabold text-gray-900 sm:text-3xl">Lifetime Membership</h3>
-              <p class="mt-6 text-base text-gray-500">Lorem ipsum dolor sit amet consect etur adipisicing elit. Itaque amet indis perferendis blanditiis repellendus etur quidem assumenda.</p>
-              <div class="mt-8">
-                <div class="flex items-center">
-                  <h4 class="flex-shrink-0 pr-4 bg-white text-sm tracking-wider font-semibold uppercase text-indigo-600">What's included</h4>
-                  <div class="flex-1 border-t-2 border-gray-200" />
-                </div>
-                <ul role="list" class="mt-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5">
-                  <li v-for="feature in includedFeatures" :key="feature" class="flex items-start lg:col-span-1">
-                    <div class="flex-shrink-0">
-                      <CheckCircleIcon class="h-5 w-5 text-green-400" aria-hidden="true" />
-                    </div>
-                    <p class="ml-3 text-sm text-gray-700">
-                      {{ feature }}
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="py-8 px-6 text-center bg-gray-50 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
-              <p class="text-lg leading-6 font-medium text-gray-900">Pay once, own it forever</p>
-              <div class="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
-                <span> $349 </span>
-                <span class="ml-3 text-xl font-medium text-gray-500"> USD </span>
-              </div>
-              <p class="mt-4 text-sm">
-                <a href="#" class="font-medium text-gray-500 underline"> Learn about our membership policy </a>
-              </p>
-              <div class="mt-6">
-                <div class="rounded-md shadow">
-                  <a href="#" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"> Get Access </a>
-                </div>
-              </div>
-              <div class="mt-4 text-sm">
-                <a href="#" class="font-medium text-gray-900">
-                  Get a free sample
-                  {{ ' ' }}
-                  <span class="font-normal text-gray-500"> (20MB) </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
-import { CheckCircleIcon } from '@heroicons/vue/solid'
-
-const includedFeatures = [
-  'Private forum access',
-  'Member resources',
-  'Entry to annual conference',
-  'Official member t-shirt',
-]
-
 export default {
-  components: {
-    CheckCircleIcon,
-  },
   setup() {
-    return {
-      includedFeatures,
-    }
+    const plans = [
+      {
+        name: 'Listening Session',
+        price: '$0',
+        features: [
+          '15-minute check-in call',
+          'One issue or question',
+          'Tips for next steps',
+          'Available 1x per patient',
+        ],
+        cta: 'Start Here',
+        featured: false,
+      },
+      {
+        name: 'Care Companion',
+        price: '$120/wk',
+        features: [
+          '1-hour weekly support',
+          'Appointment preparation',
+          'Post-visit review',
+          'Phone/email follow-up',
+        ],
+        cta: 'Get Support',
+        featured: false,
+      },
+      {
+        name: 'Advocate in Action',
+        price: '$240/wk',
+        features: [
+          '2 hours of advocacy',
+          'In-person or virtual visit support',
+          'Medical note translation',
+          'Care coordination assistance',
+        ],
+        cta: 'Book Advocate',
+        featured: true,
+      },
+      {
+        name: 'Family Circle',
+        price: '$480/wk',
+        features: [
+          '4+ hours support per week',
+          'Multiple appointments',
+          'Ongoing care planning',
+          'Full family updates & guidance',
+        ],
+        cta: 'Build a Plan',
+        featured: false,
+      },
+    ];
+
+    return { plans };
   },
-}
+};
 </script>
