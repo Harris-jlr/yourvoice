@@ -6,8 +6,6 @@ import OurServices from '../contents/OurServices.vue'
 import StrategicPartner from '../views/StrategicPartner.vue'
 import aboutbld from '../views/aboutbld.vue'
 import mycodepen from '../views/mycodepen.vue'
-import Investorcta from '../components/investorcta.vue'
-import InvestorDetail from '../views/InvestorDetail.vue'
 import pricing from '../views/pricing.vue'
 import ConsultationPlans from '../contents/ConsultationPlans.vue'
 import BookingsAdmin from '../Protected/views/bookingsAdmin.vue'
@@ -22,8 +20,6 @@ const routes = [
   { path: '/mycodepen', name: 'mycodepen', component: mycodepen },
   { path: '/StrategicPartner', name: 'StrategicPartner', component: StrategicPartner },
   { path: '/OurServices', name: 'OurServices', component: OurServices },
-  { path: '/investors', name: 'investors', component: Investorcta },
-  { path: '/investors/:slug', name: 'InvestorDetail', component: InvestorDetail },
   { path: '/consultation', name: 'ConsultationPlans', component: ConsultationPlans },
   { path: '/login', name: 'Login', component: Login },
   { path: '/admin/bookings', name: 'BookingsAdmin', component: BookingsAdmin }
